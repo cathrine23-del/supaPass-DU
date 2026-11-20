@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SupaPass DU - Student Account</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #102a43 0%,
+                    #176b94 55%,
+                    #25aae1 100%
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px 20px;
+        }
+
+
+        /* ===============================
+           MAIN CONTAINER
+        =============================== */
+
+        .auth-container {
+            width: 100%;
+            max-width: 950px;
+
+            background: #ffffff;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.20);
+        }
+
+
+        /* ===============================
+           LEFT SIDE
+        =============================== */
+
+        .auth-info {
+            background: #102a43;
+
+            color: white;
+
+            padding: 55px 45px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+
+            border-radius: 14px;
+
+            background: #25aae1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
+        }
+
+
+        .brand-name {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+
+        .tagline {
+            font-size: 13px;
+            opacity: 0.75;
+            margin-top: 3px;
+        }
+
+
+        .auth-info h1 {
+            font-size: 34px;
+            line-height: 1.15;
+
+            margin-bottom: 18px;
+        }
+
+
+        .auth-info > p {
+            color: #d7e5ef;
+
+            line-height: 1.7;
+
+            font-size: 15px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* ===============================
+           BENEFITS
+        =============================== */
+
+        .benefit {
+            display: flex;
+
+            gap: 14px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .benefit-icon {
+            width: 38px;
+            height: 38px;
+
+            min-width: 38px;
+
+            border-radius: 10px;
+
+            background: rgba(37, 170, 225, 0.15);
+
+            color: #25aae1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .benefit-text strong {
+            display: block;
+
+            font-size: 14px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .benefit-text span {
+            color: #b9cddd;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* ===============================
+           RIGHT SIDE
+        =============================== */
+
+        .auth-form-section {
+            padding: 50px 45px;
+
+            background: #ffffff;
+        }
+
+
+        .form-header {
+            margin-bottom: 28px;
+        }
+
+
+        .form-header h2 {
+            color: #102a43;
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .form-header p {
+            color: #718096;
+
+            font-size: 14px;
+        }
+
+
+        /* ===============================
+           TABS
+        =============================== */
+
+        .auth-tabs {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            background: #f0f5f8;
+
+            padding: 5px;
+
+            border-radius: 12px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .auth-tab {
+            border: none;
+
+            background: transparent;
+
+            padding: 12px;
+
+            border-radius: 9px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #718096;
+
+            cursor: pointer;
+        }
+
+
+        .auth-tab.active {
+            background: white;
+
+            color: #102a43;
+
+            box-shadow:
+                0 3px 10px rgba(16, 42, 67, 0.08);
+        }
+
+
+        /* ===============================
+           FORM
+        =============================== */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+
+        .form-group label {
+            display: block;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            color: #102a43;
+
+            margin-bottom: 7px;
+        }
+
+
+        .input-wrapper {
+            position: relative;
+        }
+
+
+        .input-wrapper i {
+            position: absolute;
+
+            left: 14px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #8aa0b2;
+
+            font-size: 14px;
+        }
+
+
+        .input-wrapper input {
+            width: 100%;
+
+            padding: 13px 14px 13px 42px;
+
+            border: 1px solid #d8e2e9;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+
+        .input-wrapper input:focus {
+            border-color: #25aae1;
+
+            box-shadow:
+                0 0 0 3px rgba(37, 170, 225, 0.10);
+        }
+
+
+        /* ===============================
+           PASSWORD
+        =============================== */
+
+        .password-toggle {
+            position: absolute;
+
+            right: 13px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            color: #8aa0b2;
+
+            cursor: pointer;
+        }
+
+
+        /* ===============================
+           BUTTON
+        =============================== */
+
+        .submit-btn {
+            width: 100%;
+
+            border: none;
+
+            background: #25aae1;
+
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            margin-top: 8px;
+
+            transition: 0.2s;
+        }
+
+
+        .submit-btn:hover {
+            background: #168fc4;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* ===============================
+           MESSAGE
+        =============================== */
+
+        .message {
+            display: none;
+
+            padding: 11px 13px;
+
+            border-radius: 9px;
+
+            font-size: 12px;
+
+            margin-bottom: 15px;
+
+            line-height: 1.5;
+        }
+
+
+        .message.success {
+            display: block;
+
+            background: #e8f7ef;
+
+            color: #176b3a;
+
+            border: 1px solid #b9e3ca;
+        }
+
+
+        .message.error {
+            display: block;
+
+            background: #fff0f0;
+
+            color: #a33a3a;
+
+            border: 1px solid #f0c4c4;
+        }
+
+
+        /* ===============================
+           BACK LINK
+        =============================== */
+
+        .back-link {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #718096;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            margin-top: 22px;
+        }
+
+
+        .back-link:hover {
+            color: #25aae1;
+        }
+
+
+        /* ===============================
+           RESPONSIVE
+        =============================== */
+
+        @media (max-width: 760px) {
+
+            .auth-container {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-info {
+                padding: 35px 30px;
+            }
+
+            .auth-info h1 {
+                font-size: 28px;
+            }
+
+            .auth-form-section {
+                padding: 35px 30px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .auth-info,
+            .auth-form-section {
+                padding: 28px 22px;
+            }
+
+            .auth-info h1 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="auth-container">
+
+
+    <!-- =====================================
+         LEFT INFORMATION PANEL
+    ====================================== -->
+
+    <section class="auth-info">
+
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <i class="fa-solid fa-ticket"></i>
+
+            </div>
+
+
+            <div>
+
+                <div class="brand-name">
+                    SupaPass DU
+                </div>
+
+                <div class="tagline">
+                    Your campus. Your events. Your pass.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <h1>
+            Your events,
+            all in one place.
+        </h1>
+
+
+        <p>
+            Create your SupaPass DU account to
+            discover campus events, book your
+            favourite events and keep your tickets
+            in one place.
+        </p>
+
+
+        <div class="benefit">
+
+            <div class="benefit-icon">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+            </div>
+
+
+            <div class="benefit-text">
+
+                <strong>
+                    Discover campus events
+                </strong>
+
+                <span>
+                    Find academic, sports, faith,
+                    social and entertainment events.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <div class="benefit-icon">
+
+                <i class="fa-solid fa-ticket"></i>
+
+            </div>
+
+
+            <div class="benefit-text">
+
+                <strong>
+                    Book your place
+                </strong>
+
+                <span>
+                    Reserve your place and receive
+                    a confirmed digital ticket.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <div class="benefit-icon">
+
+                <i class="fa-solid fa-mobile-screen"></i>
+
+            </div>
+
+
+            <div class="benefit-text">
+
+                <strong>
+                    Keep your tickets
+                </strong>
+
+                <span>
+                    Access your booking details
+                    whenever you need them.
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         RIGHT FORM PANEL
+    ====================================== -->
+
+    <section class="auth-form-section">
+
+
+        <div class="form-header">
+
+            <h2 id="formTitle">
+                Welcome back
+            </h2>
+
+            <p id="formSubtitle">
+                Sign in to continue to SupaPass DU.
+            </p>
+
+        </div>
+
+
+        <!-- TABS -->
+
+        <div class="auth-tabs">
+
+            <button
+                type="button"
+                class="auth-tab active"
+                id="loginTab">
+
+                Sign In
+
+            </button>
+
+
+            <button
+                type="button"
+                class="auth-tab"
+                id="registerTab">
+
+                Create Account
+
+            </button>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div
+            id="message"
+            class="message">
+        </div>
+
+
+        <!-- =================================
+             LOGIN FORM
+        ================================== -->
+
+        <form id="loginForm">
+
+
+            <div class="form-group">
+
+                <label for="loginEmail">
+                    Email Address
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="student@example.com"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="loginPassword">
+                    Password
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        required>
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-target="loginPassword">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-btn">
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                Sign In
+
+            </button>
+
+
+        </form>
+
+
+
+        <!-- =================================
+             REGISTER FORM
+        ================================== -->
+
+        <form
+            id="registerForm"
+            style="display: none;">
+
+
+            <div class="form-group">
+
+                <label for="registerName">
+                    Full Name
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <input
+                        type="text"
+                        id="registerName"
+                        placeholder="Enter your full name"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="registerEmail">
+                    Email Address
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="student@example.com"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="registerPassword">
+                    Password
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="Create a password"
+                        minlength="6"
+                        required>
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-target="registerPassword">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-btn">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Create Account
+
+            </button>
+
+
+        </form>
+
+
+        <a
+            href="../index.html"
+            class="back-link">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to SupaPass DU
+
+        </a>
+
+
+    </section>
+
+</div>
+
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        const loginTab =
+            document.getElementById(
+                "loginTab"
+            );
+
+
+        const registerTab =
+            document.getElementById(
+                "registerTab"
+            );
+
+
+        const loginForm =
+            document.getElementById(
+                "loginForm"
+            );
+
+
+        const registerForm =
+            document.getElementById(
+                "registerForm"
+            );
+
+
+        const formTitle =
+            document.getElementById(
+                "formTitle"
+            );
+
+
+        const formSubtitle =
+            document.getElementById(
+                "formSubtitle"
+            );
+
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        /* =================================
+           SHOW LOGIN
+        ================================= */
+
+        loginTab.addEventListener(
+            "click",
+            function () {
+
+                loginTab.classList.add(
+                    "active"
+                );
+
+                registerTab.classList.remove(
+                    "active"
+                );
+
+                loginForm.style.display =
+                    "block";
+
+                registerForm.style.display =
+                    "none";
+
+                formTitle.textContent =
+                    "Welcome back";
+
+                formSubtitle.textContent =
+                    "Sign in to continue to SupaPass DU.";
+
+                clearMessage();
+
+            }
+        );
+
+
+        /* =================================
+           SHOW REGISTER
+        ================================= */
+
+        registerTab.addEventListener(
+            "click",
+            function () {
+
+                registerTab.classList.add(
+                    "active"
+                );
+
+                loginTab.classList.remove(
+                    "active"
+                );
+
+                registerForm.style.display =
+                    "block";
+
+                loginForm.style.display =
+                    "none";
+
+                formTitle.textContent =
+                    "Create your account";
+
+                formSubtitle.textContent =
+                    "Join SupaPass DU and start discovering events.";
+
+                clearMessage();
+
+            }
+        );
+
+
+        /* =================================
+           PASSWORD VISIBILITY
+        ================================= */
+
+        document
+            .querySelectorAll(
+                ".password-toggle"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const targetId =
+                                button.dataset.target;
+
+                            const input =
+                                document.getElementById(
+                                    targetId
+                                );
+
+                            const icon =
+                                button.querySelector(
+                                    "i"
+                                );
+
+
+                            if (
+                                input.type ===
+                                "password"
+                            ) {
+
+                                input.type =
+                                    "text";
+
+                                icon.classList.remove(
+                                    "fa-eye"
+                                );
+
+                                icon.classList.add(
+                                    "fa-eye-slash"
+                                );
+
+                            } else {
+
+                                input.type =
+                                    "password";
+
+                                icon.classList.remove(
+                                    "fa-eye-slash"
+                                );
+
+                                icon.classList.add(
+                                    "fa-eye"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =================================
+           REGISTER
+        ================================= */
+
+        registerForm.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+                clearMessage();
+
+
+                const name =
+                    document.getElementById(
+                        "registerName"
+                    ).value.trim();
+
+
+                const email =
+                    document.getElementById(
+                        "registerEmail"
+                    ).value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "registerPassword"
+                    ).value;
+
+
+                showMessage(
+                    "Creating your account...",
+                    "success"
+                );
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "../api/register.php",
+                            {
+
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/x-www-form-urlencoded"
+                                },
+
+                                body:
+                                    new URLSearchParams({
+                                        name:
+                                            name,
+
+                                        email:
+                                            email,
+
+                                        password:
+                                            password
+                                    })
+
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (data.success) {
+
+                        showMessage(
+                            "Account created successfully! You can now sign in.",
+                            "success"
+                        );
+
+
+                        registerForm.reset();
+
+
+                        setTimeout(
+                            function () {
+
+                                loginTab.click();
+
+                                document.getElementById(
+                                    "loginEmail"
+                                ).value =
+                                    email;
+
+                            },
+                            1200
+                        );
+
+                    } else {
+
+                        showMessage(
+                            data.message ||
+                            "Registration failed.",
+                            "error"
+                        );
+
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        error
+                    );
+
+                    showMessage(
+                        "Could not connect to the SupaPass DU server.",
+                        "error"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =================================
+           LOGIN
+        ================================= */
+
+        loginForm.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+                clearMessage();
+
+
+                const email =
+                    document.getElementById(
+                        "loginEmail"
+                    ).value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "loginPassword"
+                    ).value;
+
+
+                showMessage(
+                    "Signing you in...",
+                    "success"
+                );
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "../api/login.php",
+                            {
+
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/x-www-form-urlencoded"
+                                },
+
+                                body:
+                                    new URLSearchParams({
+                                        email:
+                                            email,
+
+                                        password:
+                                            password
+                                    })
+
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (data.success) {
+
+                        /*
+                         * Store the logged-in user
+                         * temporarily in the browser.
+                         */
+
+                        localStorage.setItem(
+                            "supaPassUser",
+                            JSON.stringify(
+                                data.user
+                            )
+                        );
+
+
+                        showMessage(
+                            "Login successful! Redirecting...",
+                            "success"
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+                                window.location.href =
+                                    "../index.html";
+
+                            },
+                            800
+                        );
+
+                    } else {
+
+                        showMessage(
+                            data.message ||
+                            "Login failed.",
+                            "error"
+                        );
+
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        error
+                    );
+
+                    showMessage(
+                        "Could not connect to the SupaPass DU server.",
+                        "error"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =================================
+           MESSAGE FUNCTIONS
+        ================================= */
+
+        function showMessage(
+            text,
+            type
+        ) {
+
+            message.textContent =
+                text;
+
+            message.className =
+                "message " +
+                type;
+
+        }
+
+
+        function clearMessage() {
+
+            message.textContent =
+                "";
+
+            message.className =
+                "message";
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

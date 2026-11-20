@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About | SupaPass DU</title>
+
+    <link rel="stylesheet" href="/SupaPass-DU/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="/SupaPass-DU/index.html" class="brand">
+
+            <span class="brand-mark">
+                <i class="fa-solid fa-ticket"></i>
+            </span>
+
+            <span class="brand-text">
+                <strong>SupaPass <span>DU</span></strong>
+                <small>Your campus. Your events. Your pass.</small>
+            </span>
+
+        </a>
+
+        <div class="nav-right-controls">
+
+            <span id="userAccount" class="user-account"></span>
+
+            <button
+                type="button"
+                class="menu-toggle-btn"
+                id="menuToggleBtn"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     NAVIGATION DRAWER
+========================================================= -->
+
+<div id="navDrawerBackdrop" class="drawer-backdrop"></div>
+
+
+<aside id="navDrawer" class="nav-drawer" aria-hidden="true">
+
+    <div class="drawer-header">
+
+        <div class="brand">
+
+            <span class="brand-mark">
+                <i class="fa-solid fa-ticket"></i>
+            </span>
+
+            <span class="brand-text">
+
+                <strong>
+                    SupaPass <span>DU</span>
+                </strong>
+
+                <small>
+                    Campus Menu
+                </small>
+
+            </span>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="drawer-close-btn"
+            id="drawerCloseBtn"
+            aria-label="Close navigation menu">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+
+
+    <nav class="drawer-links">
+
+        <a href="/SupaPass-DU/index.html">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+
+        <a href="/SupaPass-DU/events/events.html">
+            <i class="fa-solid fa-calendar-days"></i>
+            Events
+        </a>
+
+        <a href="/SupaPass-DU/categories/categories.html">
+            <i class="fa-solid fa-layer-group"></i>
+            Categories
+        </a>
+
+        <a href="/SupaPass-DU/about/about.html" class="active">
+            <i class="fa-solid fa-circle-info"></i>
+            About
+        </a>
+
+        <a href="/SupaPass-DU/student/tickets.html">
+            <i class="fa-solid fa-ticket"></i>
+            My Tickets
+        </a>
+
+    </nav>
+
+
+
+    <div class="drawer-footer">
+
+        <button
+            type="button"
+            class="btn btn-outline full-width"
+            id="loginBtn">
+
+            <i class="fa-solid fa-user"></i>
+            Sign In
+
+        </button>
+
+
+        <button
+            type="button"
+            class="btn btn-primary full-width"
+            id="organizerBtn">
+
+            <i class="fa-solid fa-plus"></i>
+            Become an Organizer
+
+        </button>
+
+
+        <button
+            id="logoutBtn"
+            class="btn btn-outline full-width logout-drawer-btn"
+            style="display: none;">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main>
+
+
+    <!-- =====================================================
+         ABOUT INTRO
+    ====================================================== -->
+
+    <section class="section dashboard-section">
+
+        <div class="container">
+
+            <div class="dashboard-topbar">
+
+                <a href="/SupaPass-DU/index.html" class="btn btn-outline">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Home
+
+                </a>
+
+
+                <span class="dashboard-badge">
+
+                    <i class="fa-solid fa-circle-info"></i>
+                    About SupaPass DU
+
+                </span>
+
+            </div>
+
+
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-body">
+
+                    <span class="section-label">
+                        ABOUT SUPAPASS DU
+                    </span>
+
+                    <h1>
+                        Your campus. Your events. Your pass.
+                    </h1>
+
+                    <p>
+                        SupaPass DU is a campus event discovery and ticket
+                        booking platform designed to make it easier for
+                        Daystar University students to discover, book and
+                        keep track of campus events.
+                    </p>
+
+                    <p>
+                        Instead of searching through different social media
+                        posts, group chats or announcements, students can
+                        use one central platform to find upcoming events,
+                        explore categories and reserve their places.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         HOW IT WORKS
+    ====================================================== -->
+
+    <section class="section how-it-works">
+
+        <div class="container">
+
+            <div class="section-heading centered">
+
+                <span class="section-label">
+                    HOW IT WORKS
+                </span>
+
+                <h2>
+                    Campus events, made simple.
+                </h2>
+
+                <p>
+                    From discovery to your digital pass.
+                </p>
+
+            </div>
+
+
+
+            <div class="steps">
+
+
+                <!-- STEP 1 -->
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <div class="step-icon">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                    </div>
+
+                    <h3>
+                        Discover
+                    </h3>
+
+                    <p>
+                        Find events happening around Daystar using
+                        categories, filters or search.
+                    </p>
+
+                </div>
+
+
+
+                <!-- STEP 2 -->
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <div class="step-icon">
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                    </div>
+
+                    <h3>
+                        Book
+                    </h3>
+
+                    <p>
+                        Choose an event and reserve your place through
+                        SupaPass DU.
+                    </p>
+
+                </div>
+
+
+
+                <!-- STEP 3 -->
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <div class="step-icon">
+
+                        <i class="fa-solid fa-qrcode"></i>
+
+                    </div>
+
+                    <h3>
+                        Attend
+                    </h3>
+
+                    <p>
+                        Keep your digital ticket and use it when you
+                        arrive at the event.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOR STUDENTS
+    ====================================================== -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-heading centered">
+
+                <span class="section-label">
+                    FOR STUDENTS
+                </span>
+
+                <h2>
+                    Everything in one place.
+                </h2>
+
+                <p>
+                    SupaPass DU helps students spend less time searching
+                    and more time enjoying campus life.
+                </p>
+
+            </div>
+
+
+
+            <div class="categories-grid">
+
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+
+                    <h3>
+                        Discover Events
+                    </h3>
+
+                    <p>
+                        Browse upcoming academic, entertainment, sports,
+                        faith and social events.
+                    </p>
+
+                </div>
+
+
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        <i class="fa-solid fa-filter"></i>
+                    </div>
+
+                    <h3>
+                        Find What You Like
+                    </h3>
+
+                    <p>
+                        Use categories, event types, schools and search
+                        to quickly find relevant events.
+                    </p>
+
+                </div>
+
+
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        <i class="fa-solid fa-ticket"></i>
+                    </div>
+
+                    <h3>
+                        Manage Your Tickets
+                    </h3>
+
+                    <p>
+                        Keep your confirmed bookings together in your
+                        digital ticket area.
+                    </p>
+
+                </div>
+
+
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+
+                    <h3>
+                        Easy Access
+                    </h3>
+
+                    <p>
+                        Access SupaPass DU from your phone, tablet or
+                        computer wherever you are on campus.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ORGANIZER SECTION
+    ====================================================== -->
+
+    <section class="organizer-section">
+
+        <div class="container">
+
+            <div class="organizer-box">
+
+                <div class="organizer-content">
+
+                    <span class="section-label light">
+                        FOR ORGANIZERS
+                    </span>
+
+                    <h2>
+                        Have an event to share?
+                    </h2>
+
+                    <p>
+                        Reach Daystar students from one central
+                        campus event platform.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    id="organizerCta">
+
+                    <i class="fa-solid fa-calendar-plus"></i>
+
+                    Become an Organizer
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer compact-footer">
+
+    <div class="container copyright">
+
+        <span>
+            © 2026 SupaPass DU
+        </span>
+
+        <span>
+            Daystar University Campus Event Hub
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<div id="modalRoot"></div>
+
+
+<script src="/SupaPass-DU/app.js"></script>
+
+</body>
+
+</html>

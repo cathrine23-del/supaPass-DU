@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SupaPass DU | Organizer</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f8fb;
+            color: #102a43;
+            min-height: 100vh;
+        }
+
+        /* =====================================
+           NAVBAR
+        ===================================== */
+        .navbar {
+            height: 72px;
+            background: #ffffff;
+            border-bottom: 1px solid #e2eaf0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #102a43;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #25aae1;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-name span {
+            color: #25aae1;
+        }
+
+        .tagline {
+            font-size: 10px;
+            color: #718096;
+            margin-top: 2px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: none;
+            border-radius: 10px;
+            padding: 11px 16px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline {
+            background: #ffffff;
+            color: #102a43;
+            border: 1px solid #d7e2e9;
+        }
+
+        .btn-outline:hover {
+            border-color: #25aae1;
+            color: #168fc4;
+            background: #f4fafe;
+        }
+
+        .btn-primary {
+            background: #25aae1;
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(37, 170, 225, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: #168fc4;
+            transform: translateY(-1px);
+        }
+
+        /* =====================================
+           MAIN PAGE
+        ===================================== */
+        .organizer-page {
+            width: 92%;
+            max-width: 780px;
+            margin: 40px auto 60px;
+        }
+
+        .organizer-header {
+            margin-bottom: 24px;
+        }
+
+        .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #e8f7fd;
+            color: #168fc4;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .organizer-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #102a43;
+            margin-bottom: 8px;
+        }
+
+        .organizer-header p {
+            color: #627d98;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* =====================================
+           FORM CARD
+        ===================================== */
+        .form-card {
+            background: #ffffff;
+            border: 1px solid #dfe8ee;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 12px 32px rgba(16, 42, 67, 0.06);
+        }
+
+        .form-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .form-icon {
+            width: 46px;
+            height: 46px;
+            min-width: 46px;
+            border-radius: 13px;
+            background: #e8f7fd;
+            color: #25aae1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+        }
+
+        .form-header h2 {
+            font-size: 19px;
+            color: #102a43;
+            margin-bottom: 3px;
+        }
+
+        .form-header p {
+            font-size: 13px;
+            color: #718096;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #102a43;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d5e0e8;
+            border-radius: 11px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #102a43;
+            background: #fbfdff;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: #ffffff;
+            border-color: #25aae1;
+            box-shadow: 0 0 0 3px rgba(37, 170, 225, 0.16);
+        }
+
+        .publish-btn {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 15px;
+            margin-top: 6px;
+        }
+
+        .form-message {
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: 700;
+            min-height: 20px;
+        }
+
+        .msg-success {
+            color: #0e7490;
+            background: #ecfeff;
+            border: 1px solid #bae6fd;
+            padding: 12px 14px;
+            border-radius: 10px;
+        }
+
+        .msg-error {
+            color: #b91c1c;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            padding: 12px 14px;
+            border-radius: 10px;
+        }
+
+        .msg-info {
+            color: #168fc4;
+            padding: 6px 0;
+        }
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+        @media (max-width: 640px) {
+            .navbar {
+                padding: 0 18px;
+            }
+
+            .tagline {
+                display: none;
+            }
+
+            .form-card {
+                padding: 20px;
+                border-radius: 16px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .organizer-header h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+
+        <a href="/SupaPass-DU/index.html" class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-ticket"></i>
+            </div>
+
+            <div>
+                <div class="brand-name">SupaPass <span>DU</span></div>
+                <div class="tagline">Your campus. Your events. Your pass.</div>
+            </div>
+        </a>
+
+        <div class="nav-actions">
+            <a href="/SupaPass-DU/events/events.html" class="btn btn-outline">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Events
+            </a>
+        </div>
+
+    </nav>
+
+
+    <!-- ORGANIZER PAGE -->
+    <main class="organizer-page">
+
+        <section class="organizer-header">
+
+            <div>
+                <span class="section-kicker">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    ORGANIZER PORTAL
+                </span>
+
+                <h1>Create a Campus Event</h1>
+
+                <p>
+                    Add your event to SupaPass DU and make it easy
+                    for students to discover and attend.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- EVENT FORM -->
+        <section class="form-card">
+
+            <div class="form-header">
+
+                <div class="form-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <div>
+                    <h2>Event Information</h2>
+                    <p>Fill in the details below to publish your event.</p>
+                </div>
+
+            </div>
+
+
+            <form id="eventForm">
+
+                <!-- TITLE -->
+                <div class="form-group">
+
+                    <label for="title">
+                        Event Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="e.g. Web Development Workshop"
+                        required>
+
+                </div>
+
+
+                <!-- SCHOOL + EVENT TYPE -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="schoolFaculty">
+                            School / Faculty
+                        </label>
+
+                        <select id="schoolFaculty"
+                                name="school_faculty"
+                                required>
+
+                            <option value="">
+                                Select school or faculty
+                            </option>
+
+                            <option value="General / University-wide">
+                                General / University-wide
+                            </option>
+
+                            <option value="School of Science & Technology">
+                                School of Science &amp; Technology
+                            </option>
+
+                            <option value="School of Business">
+                                School of Business
+                            </option>
+                            <option value="School of law">
+                                School of Business
+                            </option>
+
+                            <option value="School of Communication">
+                                School of Communication
+                            </option>
+
+                            <option value="School of Education">
+                                School of Education
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="eventType">
+                            Event Type
+                        </label>
+
+                        <select id="eventType"
+                                name="event_type"
+                                required>
+
+                            <option value="">
+                                Select event type
+                            </option>
+
+                            <option value="Academic">
+                                Academic
+                            </option>
+
+                            <option value="Non-Academic">
+                                Non-Academic
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CATEGORY -->
+                <div class="form-group">
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select id="category"
+                            name="category"
+                            required>
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="Entertainment">
+                            Entertainment
+                        </option>
+
+                        <option value="Dinner">
+                            Dinner
+                        </option>
+
+                        <option value="Workshop">
+                            Workshop
+                        </option>
+
+                        <option value="Sports">
+                            Sports
+                        </option>
+
+                        <option value="Faith">
+                            Faith
+                        </option>
+
+                        <option value="Social">
+                            Social
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+                <div class="form-group">
+
+                    <label for="description">
+                        Event Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5"
+                        placeholder="Tell students what this event is about..."
+                        required></textarea>
+
+                </div>
+
+
+                <!-- DATE + TIME -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="eventDate">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="eventDate"
+                            name="event_date"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="eventTime">
+                            Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="eventTime"
+                            name="event_time"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- VENUE + CAPACITY -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="venue">
+                            Venue
+                        </label>
+
+                        <input
+                            type="text"
+                            id="venue"
+                            name="venue"
+                            placeholder="e.g. Daystar University Chapel"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="capacity">
+                            Maximum Capacity
+                        </label>
+
+                        <input
+                            type="number"
+                            id="capacity"
+                            name="capacity"
+                            min="1"
+                            placeholder="e.g. 200"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ORGANIZER ID -->
+                <input
+                    type="hidden"
+                    id="organizerId"
+                    name="organizer_id"
+                    value="1">
+
+
+                <!-- SUBMIT -->
+                <button type="submit"
+                        class="btn btn-primary publish-btn">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Publish Event
+
+                </button>
+
+            </form>
+
+
+            <!-- MESSAGE -->
+            <div id="formMessage" class="form-message"></div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        document.getElementById("eventForm").addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            const form = this;
+            const message = document.getElementById("formMessage");
+
+            const formData = new FormData(form);
+
+            message.className = "form-message msg-info";
+            message.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Publishing event...';
+
+            fetch("/SupaPass-DU/api/create_event.php", {
+                method: "POST",
+                body: formData
+            })
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                if (data.success) {
+
+                    message.className = "form-message msg-success";
+                    message.innerHTML =
+                        '<i class="fa-solid fa-circle-check"></i> ' +
+                        'Event published successfully!';
+
+                    form.reset();
+
+                } else {
+
+                    message.className = "form-message msg-error";
+                    message.innerHTML =
+                        '<i class="fa-solid fa-circle-exclamation"></i> ' +
+                        (data.message || "Unable to publish event.");
+
+                }
+
+            })
+
+            .catch(error => {
+
+                console.error(error);
+
+                message.className = "form-message msg-error";
+                message.innerHTML =
+                    '<i class="fa-solid fa-circle-exclamation"></i> ' +
+                    'Something went wrong while publishing the event.';
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

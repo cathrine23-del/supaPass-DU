@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>My Tickets - SupaPass DU</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f4f8fb;
+
+            color: #102a43;
+
+            min-height: 100vh;
+
+        }
+
+
+        /* =====================================
+           NAVBAR
+        ===================================== */
+
+        .navbar {
+
+            height: 72px;
+
+            background: white;
+
+            border-bottom:
+                1px solid #e2eaf0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 6%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 10;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            text-decoration: none;
+
+            color: #102a43;
+
+        }
+
+
+        .brand-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 12px;
+
+            background: #25aae1;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .brand-name {
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+        }
+
+
+        .tagline {
+
+            font-size: 10px;
+
+            color: #718096;
+
+            margin-top: 2px;
+
+        }
+
+
+        .back-link {
+
+            text-decoration: none;
+
+            color: #536779;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        .back-link:hover {
+
+            color: #25aae1;
+
+        }
+
+
+        /* =====================================
+           PAGE
+        ===================================== */
+
+        .page {
+
+            width: 90%;
+
+            max-width: 1100px;
+
+            margin:
+                45px auto;
+
+        }
+
+
+        .page-header {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .page-header h1 {
+
+            font-size: 34px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .page-header p {
+
+            color: #718096;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================
+           USER INFO
+        ===================================== */
+
+        .user-card {
+
+            background: white;
+
+            border: 1px solid #e1e9ef;
+
+            border-radius: 16px;
+
+            padding: 18px 22px;
+
+            margin-bottom: 28px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .user-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: #e8f7fd;
+
+            color: #168fc4;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .user-info strong {
+
+            display: block;
+
+            color: #102a43;
+
+            font-size: 14px;
+
+        }
+
+
+        .user-info span {
+
+            color: #718096;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =====================================
+           TICKETS GRID
+        ===================================== */
+
+        #ticketsContainer {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(300px, 1fr)
+                );
+
+            gap: 22px;
+
+        }
+
+
+        /* =====================================
+           TICKET CARD
+        ===================================== */
+
+        .ticket-card {
+
+            background: white;
+
+            border:
+                1px solid #dfe8ee;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 25px
+                rgba(16, 42, 67, 0.06);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .ticket-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(16, 42, 67, 0.10);
+
+        }
+
+
+        .ticket-top {
+
+            background: #102a43;
+
+            color: white;
+
+            padding: 20px;
+
+        }
+
+
+        .ticket-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+        }
+
+
+        .ticket-brand-name {
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+        }
+
+
+        .ticket-brand i {
+
+            color: #25aae1;
+
+            font-size: 22px;
+
+        }
+
+
+        .status {
+
+            display: inline-block;
+
+            margin-top: 14px;
+
+            padding:
+                5px 10px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(37, 170, 225, 0.15);
+
+            color: #8ddcff;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+
+        }
+
+
+        .ticket-body {
+
+            padding: 22px;
+
+        }
+
+
+        .event-title {
+
+            color: #102a43;
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .detail {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 11px;
+
+            margin-bottom: 13px;
+
+        }
+
+
+        .detail-icon {
+
+            width: 30px;
+
+            min-width: 30px;
+
+            height: 30px;
+
+            border-radius: 8px;
+
+            background: #edf7fb;
+
+            color: #168fc4;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 12px;
+
+        }
+
+
+        .detail-text {
+
+            font-size: 12px;
+
+            color: #718096;
+
+        }
+
+
+        .detail-text strong {
+
+            display: block;
+
+            color: #102a43;
+
+            font-size: 13px;
+
+            margin-top: 2px;
+
+        }
+
+
+        .ticket-number {
+
+            border-top:
+                1px dashed #cbd5e0;
+
+            margin-top: 20px;
+
+            padding-top: 17px;
+
+            text-align: center;
+
+        }
+
+
+        .ticket-number-label {
+
+            font-size: 10px;
+
+            color: #718096;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .ticket-number-value {
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            color: #25aae1;
+
+            margin-top: 5px;
+
+        }
+
+
+        .ticket-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 18px;
+
+        }
+
+
+        .btn {
+
+            border: none;
+
+            border-radius: 9px;
+
+            padding: 10px 14px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            flex: 1;
+
+        }
+
+
+        .btn-primary {
+
+            background: #25aae1;
+
+            color: white;
+
+        }
+
+
+        .btn-primary:hover {
+
+            background: #168fc4;
+
+        }
+
+
+        .btn-outline {
+
+            background: white;
+
+            color: #102a43;
+
+            border:
+                1px solid #d7e2e9;
+
+        }
+
+
+        .btn-outline:hover {
+
+            border-color: #25aae1;
+
+            color: #168fc4;
+
+        }
+
+
+        /* =====================================
+           EMPTY STATE
+        ===================================== */
+
+        .empty-state {
+
+            background: white;
+
+            border:
+                1px dashed #cbd8e1;
+
+            border-radius: 18px;
+
+            padding: 60px 25px;
+
+            text-align: center;
+
+            display: none;
+
+        }
+
+
+        .empty-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            border-radius: 50%;
+
+            background: #eaf7fc;
+
+            color: #25aae1;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin:
+                0 auto 18px;
+
+            font-size: 24px;
+
+        }
+
+
+        .empty-state h2 {
+
+            font-size: 21px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .empty-state p {
+
+            color: #718096;
+
+            font-size: 13px;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .browse-btn {
+
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #25aae1;
+
+            color: white;
+
+            padding:
+                11px 18px;
+
+            border-radius: 9px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+        }
+
+
+        /* =====================================
+           LOADING
+        ===================================== */
+
+        .loading {
+
+            text-align: center;
+
+            padding: 50px;
+
+            color: #718096;
+
+            font-size: 13px;
+
+        }
+
+
+        .loading i {
+
+            color: #25aae1;
+
+            margin-right: 7px;
+
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                padding:
+                    0 20px;
+
+            }
+
+            .tagline {
+
+                display: none;
+
+            }
+
+            .page {
+
+                width: 92%;
+
+                margin:
+                    30px auto;
+
+            }
+
+            .page-header h1 {
+
+                font-size: 28px;
+
+            }
+
+            .ticket-actions {
+
+                flex-direction: column;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<!-- =====================================
+     NAVBAR
+====================================== -->
+
+<nav class="navbar">
+
+    <a
+        href="/SupaPass-DU/index.html"
+        class="brand">
+
+        <div class="brand-icon">
+
+            <i class="fa-solid fa-ticket"></i>
+
+        </div>
+
+
+        <div>
+
+            <div class="brand-name">
+                SupaPass DU
+            </div>
+
+            <div class="tagline">
+                Your campus. Your events. Your pass.
+            </div>
+
+        </div>
+
+    </a>
+
+
+    <a
+        href="/SupaPass-DU/events/events.html"
+        class="back-link">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Events
+
+    </a>
+
+</nav>
+
+
+
+<!-- =====================================
+     MAIN PAGE
+====================================== -->
+
+<main class="page">
+
+
+    <div class="page-header">
+
+        <h1>
+            My Tickets
+        </h1>
+
+        <p>
+            View and manage your confirmed SupaPass DU bookings.
+        </p>
+
+    </div>
+
+
+
+    <!-- USER INFORMATION -->
+
+    <div
+        class="user-card"
+        id="userCard">
+
+        <div class="user-icon">
+
+            <i class="fa-solid fa-user"></i>
+
+        </div>
+
+
+        <div class="user-info">
+
+            <strong id="userName">
+                Student
+            </strong>
+
+            <span id="userEmail">
+                Loading account...
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- LOADING -->
+
+    <div
+        id="loading"
+        class="loading">
+
+        <i class="fa-solid fa-spinner fa-spin"></i>
+
+        Loading your tickets...
+
+    </div>
+
+
+
+    <!-- TICKETS -->
+
+    <div
+        id="ticketsContainer">
+    </div>
+
+
+
+    <!-- EMPTY STATE -->
+
+    <div
+        id="emptyState"
+        class="empty-state">
+
+        <div class="empty-icon">
+
+            <i class="fa-solid fa-ticket"></i>
+
+        </div>
+
+
+        <h2>
+            No tickets yet
+        </h2>
+
+
+        <p>
+            You haven't booked any events yet.
+            Discover what's happening around campus.
+        </p>
+
+
+        <a
+            href="/SupaPass-DU/events/events.html"
+            class="browse-btn">
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            Browse Events
+
+        </a>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        /* =====================================
+           GET LOGGED-IN USER
+        ===================================== */
+
+        const storedUser =
+            localStorage.getItem(
+                "supaPassUser"
+            );
+
+
+        if (!storedUser) {
+
+            window.location.href =
+                "/SupaPass-DU/auth/auth.html";
+
+            return;
+
+        }
+
+
+        const user =
+            JSON.parse(
+                storedUser
+            );
+
+
+        document.getElementById(
+            "userName"
+        ).textContent =
+            user.name ||
+            "Student";
+
+
+        document.getElementById(
+            "userEmail"
+        ).textContent =
+            user.email ||
+            "";
+
+
+
+        /* =====================================
+           LOAD BOOKINGS
+        ===================================== */
+
+        loadTickets(
+            user.id
+        );
+
+
+
+        async function loadTickets(
+            userId
+        ) {
+
+            const loading =
+                document.getElementById(
+                    "loading"
+                );
+
+
+            const container =
+                document.getElementById(
+                    "ticketsContainer"
+                );
+
+
+            const emptyState =
+                document.getElementById(
+                    "emptyState"
+                );
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `/SupaPass-DU/api/get_bookings.php?user_id=${encodeURIComponent(userId)}`
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                loading.style.display =
+                    "none";
+
+
+                if (
+                    !data.success ||
+                    !data.bookings ||
+                    data.bookings.length === 0
+                ) {
+
+                    emptyState.style.display =
+                        "block";
+
+                    return;
+
+                }
+
+
+                data.bookings.forEach(
+                    function (booking) {
+
+                        const card =
+                            createTicketCard(
+                                booking
+                            );
+
+                        container.appendChild(
+                            card
+                        );
+
+                    }
+                );
+
+            } catch (error) {
+
+                console.error(
+                    error
+                );
+
+                loading.innerHTML = `
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    Could not load your tickets.
+
+                `;
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           CREATE TICKET CARD
+        ===================================== */
+
+        function createTicketCard(
+            booking
+        ) {
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "ticket-card";
+
+
+            const eventTitle =
+                booking.title ||
+                "SupaPass DU Event";
+
+
+            const eventDate =
+                booking.event_date ||
+                "Date TBA";
+
+
+            const eventTime =
+                booking.event_time ||
+                "Time TBA";
+
+
+            const venue =
+                booking.venue ||
+                "Venue TBA";
+
+
+            const ticketNumber =
+                booking.ticket_number ||
+                "Generated";
+
+
+            const status =
+                booking.status ||
+                "CONFIRMED";
+
+
+            card.innerHTML = `
+
+                <div class="ticket-top">
+
+                    <div class="ticket-brand">
+
+                        <div class="ticket-brand-name">
+                            SupaPass DU
+                        </div>
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                    </div>
+
+
+                    <span class="status">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        ${status}
+
+                    </span>
+
+                </div>
+
+
+                <div class="ticket-body">
+
+                    <div class="event-title">
+                        ${eventTitle}
+                    </div>
+
+
+                    <div class="detail">
+
+                        <div class="detail-icon">
+
+                            <i class="fa-solid fa-calendar"></i>
+
+                        </div>
+
+
+                        <div class="detail-text">
+
+                            Date
+
+                            <strong>
+                                ${eventDate}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <div class="detail-icon">
+
+                            <i class="fa-solid fa-clock"></i>
+
+                        </div>
+
+
+                        <div class="detail-text">
+
+                            Time
+
+                            <strong>
+                                ${eventTime}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <div class="detail-icon">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                        </div>
+
+
+                        <div class="detail-text">
+
+                            Venue
+
+                            <strong>
+                                ${venue}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ticket-number">
+
+                        <div class="ticket-number-label">
+                            Ticket Number
+                        </div>
+
+                        <div class="ticket-number-value">
+                            ${ticketNumber}
+                        </div>
+
+                    </div>
+
+
+                    <div class="ticket-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-primary download-btn">
+
+                            <i class="fa-solid fa-download"></i>
+
+                            Download
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-outline print-btn">
+
+                            <i class="fa-solid fa-print"></i>
+
+                            Print
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            card
+                .querySelector(
+                    ".download-btn"
+                )
+                .addEventListener(
+                    "click",
+                    function () {
+
+                        downloadTicket(
+                            booking
+                        );
+
+                    }
+                );
+
+
+            card
+                .querySelector(
+                    ".print-btn"
+                )
+                .addEventListener(
+                    "click",
+                    function () {
+
+                        printTicket(
+                            booking
+                        );
+
+                    }
+                );
+
+
+            return card;
+
+        }
+
+
+
+        /* =====================================
+           DOWNLOAD TICKET
+        ===================================== */
+
+        function downloadTicket(
+            booking
+        ) {
+
+            const ticketNumber =
+                booking.ticket_number ||
+                "Generated";
+
+
+            const html = `
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+SupaPass DU Ticket - ${ticketNumber}
+</title>
+
+<style>
+
+body {
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    background:
+        #eef5f9;
+
+    padding:
+        40px 20px;
+
+}
+
+.ticket {
+
+    max-width:
+        650px;
+
+    margin:
+        auto;
+
+    background:
+        white;
+
+    border-radius:
+        18px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 10px 30px
+        rgba(16,42,67,0.15);
+
+}
+
+.header {
+
+    background:
+        #102a43;
+
+    color:
+        white;
+
+    padding:
+        28px;
+
+}
+
+.brand {
+
+    font-size:
+        28px;
+
+    font-weight:
+        800;
+
+}
+
+.tagline {
+
+    font-size:
+        13px;
+
+    opacity:
+        0.8;
+
+    margin-top:
+        5px;
+
+}
+
+.content {
+
+    padding:
+        30px;
+
+}
+
+.label {
+
+    font-size:
+        10px;
+
+    color:
+        #718096;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        1px;
+
+}
+
+.event {
+
+    font-size:
+        26px;
+
+    font-weight:
+        800;
+
+    color:
+        #102a43;
+
+    margin:
+        7px 0 25px;
+
+}
+
+.details {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        22px;
+
+}
+
+.detail strong {
+
+    display:
+        block;
+
+    margin-top:
+        6px;
+
+    color:
+        #102a43;
+
+}
+
+.number {
+
+    border-top:
+        1px dashed #cbd5e0;
+
+    margin-top:
+        30px;
+
+    padding-top:
+        25px;
+
+    text-align:
+        center;
+
+}
+
+.ticket-number {
+
+    font-size:
+        24px;
+
+    font-weight:
+        800;
+
+    color:
+        #25aae1;
+
+    margin-top:
+        7px;
+
+}
+
+.status {
+
+    display:
+        inline-block;
+
+    margin-top:
+        12px;
+
+    padding:
+        7px 14px;
+
+    border-radius:
+        20px;
+
+    background:
+        #e8f7fd;
+
+    color:
+        #1679a6;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+}
+
+.footer {
+
+    background:
+        #f7fafc;
+
+    text-align:
+        center;
+
+    padding:
+        18px;
+
+    color:
+        #718096;
+
+    font-size:
+        11px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="ticket">
+
+
+    <div class="header">
+
+        <div class="brand">
+            SUPAPASS DU
+        </div>
+
+        <div class="tagline">
+            Your campus. Your events. Your pass.
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="label">
+            Event
+        </div>
+
+        <div class="event">
+            ${booking.title || "SupaPass DU Event"}
+        </div>
+
+
+        <div class="details">
+
+            <div>
+
+                <div class="label">
+                    Date
+                </div>
+
+                <strong>
+                    ${booking.event_date || "Date TBA"}
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <div class="label">
+                    Time
+                </div>
+
+                <strong>
+                    ${booking.event_time || "Time TBA"}
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <div class="label">
+                    Venue
+                </div>
+
+                <strong>
+                    ${booking.venue || "Venue TBA"}
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <div class="label">
+                    Student
+                </div>
+
+                <strong>
+                    ${user.name || "Student"}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="number">
+
+            <div class="label">
+                Ticket Number
+            </div>
+
+            <div class="ticket-number">
+                ${ticketNumber}
+            </div>
+
+
+            <div class="status">
+
+                ✓ ${booking.status || "CONFIRMED"}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+
+        Present this ticket at event entry.
+
+        <br>
+
+        SupaPass DU — Your campus. Your events. Your pass.
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
+
+`;
+
+
+            const blob =
+                new Blob(
+                    [html],
+                    {
+                        type:
+                            "text/html"
+                    }
+                );
+
+
+            const url =
+                URL.createObjectURL(
+                    blob
+                );
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.href =
+                url;
+
+
+            link.download =
+                `SupaPass-Ticket-${ticketNumber}.html`;
+
+
+            document.body.appendChild(
+                link
+            );
+
+
+            link.click();
+
+
+            document.body.removeChild(
+                link
+            );
+
+
+            URL.revokeObjectURL(
+                url
+            );
+
+        }
+
+
+
+        /* =====================================
+           PRINT TICKET
+        ===================================== */
+
+        function printTicket(
+            booking
+        ) {
+
+            const ticketNumber =
+                booking.ticket_number ||
+                "Generated";
+
+
+            const printWindow =
+                window.open(
+                    "",
+                    "_blank"
+                );
+
+
+            if (!printWindow) {
+
+                alert(
+                    "Please allow pop-ups to print your ticket."
+                );
+
+                return;
+
+            }
+
+
+            printWindow.document.write(`
+
+                <html>
+
+                <head>
+
+                    <title>
+                        SupaPass DU Ticket
+                    </title>
+
+                    <style>
+
+                        body {
+                            font-family:
+                                Arial,
+                                sans-serif;
+
+                            padding:
+                                40px;
+
+                            background:
+                                white;
+                        }
+
+                        .ticket {
+                            max-width:
+                                650px;
+
+                            margin:
+                                auto;
+
+                            border:
+                                1px solid #dbe7f0;
+
+                            border-radius:
+                                18px;
+
+                            overflow:
+                                hidden;
+                        }
+
+                    </style>
+
+                </head>
+
+
+                <body>
+
+                    <div class="ticket">
+
+                        <div style="
+                            background:#102a43;
+                            color:white;
+                            padding:28px;
+                        ">
+
+                            <div style="
+                                font-size:28px;
+                                font-weight:800;
+                            ">
+
+                                SUPAPASS DU
+
+                            </div>
+
+                            <div style="
+                                font-size:13px;
+                                opacity:.8;
+                                margin-top:5px;
+                            ">
+
+                                Your campus. Your events. Your pass.
+
+                            </div>
+
+                        </div>
+
+
+                        <div style="
+                            padding:30px;
+                        ">
+
+                            <div style="
+                                font-size:11px;
+                                color:#718096;
+                                text-transform:uppercase;
+                            ">
+
+                                Event
+
+                            </div>
+
+
+                            <h1 style="
+                                color:#102a43;
+                                margin:7px 0 25px;
+                            ">
+
+                                ${booking.title || "SupaPass DU Event"}
+
+                            </h1>
+
+
+                            <p>
+
+                                <strong>
+                                    Date:
+                                </strong>
+
+                                ${booking.event_date || "Date TBA"}
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>
+                                    Time:
+                                </strong>
+
+                                ${booking.event_time || "Time TBA"}
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>
+                                    Venue:
+                                </strong>
+
+                                ${booking.venue || "Venue TBA"}
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>
+                                    Student:
+                                </strong>
+
+                                ${user.name || "Student"}
+
+                            </p>
+
+
+                            <hr style="
+                                margin:25px 0;
+                                border:none;
+                                border-top:1px dashed #cbd5e0;
+                            ">
+
+
+                            <div style="
+                                text-align:center;
+                            ">
+
+                                <div style="
+                                    font-size:11px;
+                                    color:#718096;
+                                ">
+
+                                    TICKET NUMBER
+
+                                </div>
+
+
+                                <div style="
+                                    font-size:24px;
+                                    font-weight:800;
+                                    color:#25aae1;
+                                    margin-top:7px;
+                                ">
+
+                                    ${ticketNumber}
+
+                                </div>
+
+
+                                <div style="
+                                    display:inline-block;
+                                    margin-top:12px;
+                                    padding:7px 14px;
+                                    border-radius:20px;
+                                    background:#e8f7fd;
+                                    color:#1679a6;
+                                    font-size:11px;
+                                    font-weight:800;
+                                ">
+
+                                    ✓ ${booking.status || "CONFIRMED"}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </body>
+
+                </html>
+
+            `);
+
+
+            printWindow.document.close();
+
+            printWindow.focus();
+
+
+            setTimeout(
+                function () {
+
+                    printWindow.print();
+
+                },
+                500
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

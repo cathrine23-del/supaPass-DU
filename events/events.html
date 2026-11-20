@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Events | SupaPass DU</title>
+
+    <link
+        rel="stylesheet"
+        href="/SupaPass-DU/style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a
+            href="/SupaPass-DU/index.html"
+            class="brand">
+
+            <span class="brand-mark">
+                <i class="fa-solid fa-ticket"></i>
+            </span>
+
+            <span class="brand-text">
+                <strong>SupaPass <span>DU</span></strong>
+                <small>Your campus. Your events. Your pass.</small>
+            </span>
+
+        </a>
+
+        <div class="nav-right-controls">
+
+            <span id="userAccount" class="user-account"></span>
+
+            <button
+                class="menu-toggle-btn"
+                id="menuToggleBtn"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     SIDE DRAWER
+===================================================== -->
+
+<div
+    class="drawer-backdrop"
+    id="navDrawerBackdrop">
+</div>
+
+
+<aside
+    class="nav-drawer"
+    id="navDrawer"
+    aria-hidden="true">
+
+    <div class="drawer-header">
+
+        <div class="brand">
+
+            <span class="brand-mark">
+                <i class="fa-solid fa-ticket"></i>
+            </span>
+
+            <span class="brand-text">
+                <strong>SupaPass <span>DU</span></strong>
+                <small>Campus Menu</small>
+            </span>
+
+        </div>
+
+
+        <button
+            class="drawer-close-btn"
+            id="drawerCloseBtn"
+            type="button"
+            aria-label="Close navigation menu">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+
+    <nav class="drawer-links">
+
+        <a href="/SupaPass-DU/index.html">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+
+
+        <a
+            href="/SupaPass-DU/events/events.html"
+            class="active">
+
+            <i class="fa-solid fa-calendar-days"></i>
+            Events
+
+        </a>
+
+
+        <a href="/SupaPass-DU/categories/categories.html">
+
+            <i class="fa-solid fa-layer-group"></i>
+            Categories
+
+        </a>
+
+
+        <a href="/SupaPass-DU/about/about.html">
+
+            <i class="fa-solid fa-circle-info"></i>
+            About
+
+        </a>
+
+
+        <a href="/SupaPass-DU/student/tickets.html">
+
+            <i class="fa-solid fa-ticket"></i>
+            My Tickets
+
+        </a>
+
+    </nav>
+
+
+    <div class="drawer-footer">
+        <button type="button" class="btn btn-outline full-width" id="loginBtn">
+            <i class="fa-solid fa-user"></i> Sign In
+        </button>
+        <button type="button" class="btn btn-primary full-width" id="organizerBtn">
+            <i class="fa-solid fa-plus"></i> Become an Organizer
+        </button>
+        <button id="logoutBtn" class="btn btn-outline full-width logout-drawer-btn" style="display: none;">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     EVENTS PAGE
+===================================================== -->
+
+<main class="dashboard-section">
+
+
+    <div class="container">
+
+
+        <!-- TOP BAR -->
+
+        <div class="dashboard-topbar">
+
+            <div>
+
+                <a
+                    href="/SupaPass-DU/index.html"
+                    class="btn btn-outline">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back to Home
+
+                </a>
+
+            </div>
+
+
+            <span class="dashboard-badge">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                Campus Events
+
+            </span>
+
+        </div>
+
+
+
+        <!-- HEADER -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <span class="section-label">
+                    DISCOVER
+                </span>
+
+                <h1>
+                    Explore Events
+                </h1>
+
+                <p>
+                    Find academic, entertainment, sports,
+                    faith and social events happening around campus.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SEARCH & FILTERS
+        ================================================== -->
+
+        <div class="event-filter-panel">
+
+            <div class="search-box" style="width: 100%; margin-bottom: 16px;">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search events...">
+
+            </div>
+
+
+            <div class="filters-grid">
+
+                <div class="filter-group">
+
+                    <label for="schoolFilter">
+                        School
+                    </label>
+
+                    <div class="select-wrapper">
+                        <select id="schoolFilter">
+                            <option value="All">All Schools</option>
+                            <option value="General / University-wide">General / University-wide</option>
+                            <option value="School of science & Technology">School of Science &amp; Technology</option>
+                            <option value="School of Business & Economics">School of Business &amp; Economics</option>
+                            <option value="School of Communication">School of Communication</option>
+                            <option value="School of Education">School of Education</option>
+                            <option value="School of Law">School of Law</option>
+                            <option value="School of Nursing">School of Nursing</option>
+                            <option value="School of Humanities & Social Sciences">School of Humanities &amp; Social Sciences</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="typeFilter">
+                        Event Type
+                    </label>
+
+                    <div class="select-wrapper">
+                        <select id="typeFilter">
+                            <option value="All">All Types</option>
+                            <option value="Academi">Academic</option>
+                            <option value="Non-Academic">Non-Academic</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="categoryFilter">
+                        Category
+                    </label>
+
+                    <div class="select-wrapper">
+                        <select id="categoryFilter">
+                            <option value="All">All Categories</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Faith">Faith</option>
+                            <option value="Social">Social</option>
+                            <option value="Workshop">Workshop</option>
+                            <option value="Seminar">Seminar</option>
+                            <option value="Conference">Conference</option>
+                            <option value="Competition">Competition</option>
+                            <option value="Research">Research</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="resetSearch"
+                class="btn btn-outline"
+                style="margin-top: 14px;">
+
+                <i class="fa-solid fa-rotate-left"></i>
+
+                Reset
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             EVENTS GRID
+        ================================================== -->
+
+        <div
+            id="eventsGrid"
+            class="event-grid">
+
+            <!-- Events are loaded from the database -->
+
+        </div>
+
+
+
+        <!-- =================================================
+             EMPTY STATE
+        ================================================== -->
+
+        <div
+            id="emptyState"
+            class="empty-state hidden">
+
+            <div class="empty-icon">
+
+                <i class="fa-solid fa-calendar-xmark"></i>
+
+            </div>
+
+
+            <h2>
+                No events found
+            </h2>
+
+
+            <p>
+                We couldn't find any events matching
+                your search or filters.
+            </p>
+
+
+            <button
+                type="button"
+                id="resetEmptyState"
+                class="btn btn-primary">
+
+                <i class="fa-solid fa-rotate-left"></i>
+
+                Clear Filters
+
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer compact-footer">
+    <div class="container copyright">
+        <span>© 2026 SupaPass DU</span>
+        <span>Daystar University Campus Event Hub</span>
+    </div>
+</footer>
+
+
+
+<!-- =====================================================
+     MODAL ROOT
+===================================================== -->
+
+<div id="modalRoot"></div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="/SupaPass-DU/app.js"></script>
+
+
+</body>
+
+</html>
